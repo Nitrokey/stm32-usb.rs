@@ -1,4 +1,5 @@
 use core::ptr::read_volatile;
+use core::arch::asm;
 
 use packing::{
     Packed,
@@ -446,17 +447,17 @@ struct VectorTableStub {
 // This code IS working but stepping through the asm in gdb is behaving weirdly - it's continuing
 // execution when stepping over the load $0 into r0. I haven't been able to determine the cause.
 unsafe fn set_stack_and_run(vt: &VectorTableStub) -> ! {
-    asm!(r#"
-            ldr r0, [$0]
-            ldr r1, [$0, #4]
-            mov sp, r0
-            mov pc, r1
-        "#
-        :            // outputs
-        : "r"(vt)    // inputs
-        : "r0", "r1" // clobbers
-        :            //options
-    );
+    // asm!(r#"
+    //         ldr r0, [$0]
+    //         ldr r1, [$0, #4]
+    //         mov sp, r0
+    //         mov pc, r1
+    //     "#
+    //     :            // outputs
+    //     : "r"(vt)    // inputs
+    //     : "r0", "r1" // clobbers
+    //     :            //options
+    // );
     loop {}
 }
 

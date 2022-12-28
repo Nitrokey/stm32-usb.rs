@@ -4,8 +4,9 @@ MEMORY
   /* FLASH : ORIGIN = 0x08000000, LENGTH = 128K */
 
   /* Bootloader flash: */
-  FLASH : ORIGIN = 0x08000000, LENGTH = 64K 
-  
+  /*FLASH : ORIGIN = 0x08000000, LENGTH = 64K*/
+  FLASH : ORIGIN = 0x08000000, LENGTH = 640K
+
   /* Shifted 64k to make room for debug UF2 bootloader */
   /*
   FLASH : ORIGIN = 0x08010000, LENGTH = 64K

@@ -1,6 +1,5 @@
 #![no_std]
-#![feature(global_asm)]
-#![feature(asm)]
+// #![feature(asm)]
 
 pub mod hardware_extra;
 
